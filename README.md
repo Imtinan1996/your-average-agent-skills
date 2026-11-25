@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.svg" width="180" alt="Avatar: a bearded developer in sunglasses and headphones behind a laptop">
+</p>
+
 # your-average-agent-skills
 
 Agent skills I wrote and use daily, mostly for reviewing code changes. They are written for [Claude Code](https://claude.com/claude-code) but follow the open `SKILL.md` format, so other agents that read skills can use them too.
