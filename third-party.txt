@@ -1,0 +1,15 @@
+# Skills and plugins I use daily but did not write.
+# They are not copied into this repo; `./install.sh --third-party` installs them from their sources.
+#
+# Format, one per line:
+#   skill   <owner/repo>@<skill-name>                 installed with: npx skills add ... -g -y
+#   plugin  <plugin>@<marketplace>  <marketplace-repo>  installed with: claude plugin marketplace add / claude plugin install
+
+skill   anthropics/skills@frontend-design
+skill   vercel-labs/skills@find-skills
+
+plugin  mattpocock-skills@claude-plugins-official  anthropics/claude-plugins-official
+plugin  hyperframes@hyperframes                    heygen-com/hyperframes
+
+# Not installable from here: Anthropic's own skills (docx, pdf, pptx, xlsx, skill-creator, docs,
+# morning, google-workspace, import-memory) sync automatically from claude.ai to signed-in Claude Code.

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{DV:TITLE}}</title>
+<style>{{DV:DIFF2HTML_CSS}}</style>
+<style>{{DV:HLJS_CSS}}</style>
+<style>{{DV:VIEWER_CSS}}</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="bar__row">
+    <div class="bar__title">
+      <h1 id="title"></h1>
+      <span class="bar__meta" id="generated"></span>
+    </div>
+    <div class="bar__actions">
+      <span class="progress" id="progress" title="Files marked viewed in this view"></span>
+      <button type="button" class="btn" id="copy-summary" title="Copy a summary of the change for an AI agent (s)">Copy summary</button>
+      <button type="button" class="btn btn--icon" id="help-open" title="Keyboard shortcuts (?)" aria-label="Keyboard shortcuts">?</button>
+    </div>
+  </div>
+  <div class="bar__row bar__controls">
+    <label class="field"><span>Repo</span><select id="repo"></select></label>
+    <label class="field field--wide"><span>View</span><select id="view"></select></label>
+    <input class="search" id="path-filter" type="search" placeholder="Filter by path  /" aria-label="Filter files by path">
+    <input class="search search--ref" id="goto-ref" type="search" placeholder="Go to reference, e.g. app/x.rb:40-52  g" aria-label="Go to a file and line reference">
+    <span class="chips" id="status-chips" role="group" aria-label="File status"></span>
+    <span class="seg" role="group" aria-label="Files">
+      <button type="button" id="collapse-all" title="Collapse every file (Shift+X toggles)">Collapse all</button>
+      <button type="button" id="expand-all" title="Expand every file (Shift+X toggles)">Expand all</button>
+      <button type="button" id="hide-viewed" aria-pressed="false" title="Hide files marked viewed">Hide viewed</button>
+    </span>
+    <span class="seg" role="group" aria-label="Layout">
+      <button type="button" data-format="side-by-side">Split</button>
+      <button type="button" data-format="line-by-line">Unified</button>
+    </span>
+  </div>
+</header>
+
+<details class="summary" id="summary" open>
+  <summary>Summary</summary>
+  <div class="summary__body" id="summary-body"></div>
+</details>
+
+<details class="summary findings" id="findings" open hidden>
+  <summary id="findings-title">Findings</summary>
+  <ol class="findings__list" id="findings-list"></ol>
+</details>
+
+<p class="hint">Select lines, then use the button beside the selection (or press <kbd>c</kbd>) to copy a reference for an AI agent. Click a line number to open it in your editor. Press <kbd>?</kbd> for shortcuts.</p>
+
+<main id="diff"></main>
+
+<div class="sel-toolbar" id="sel-toolbar" hidden>
+  <span class="sel-toolbar__count" id="sel-count"></span>
+  <button type="button" data-copy="ref">Copy reference</button>
+  <button type="button" data-copy="code">Copy with code</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog class="help" id="help">
+  <h2>Keyboard shortcuts</h2>
+  <table>
+    <tbody>
+      <tr><td><kbd>j</kbd> / <kbd>k</kbd></td><td>Next / previous file</td></tr>
+      <tr><td><kbd>n</kbd> / <kbd>p</kbd></td><td>Next / previous change (hunk)</td></tr>
+      <tr><td><kbd>x</kbd></td><td>Collapse or expand the current file</td></tr>
+      <tr><td><kbd>Shift</kbd> + <kbd>X</kbd></td><td>Collapse or expand every file</td></tr>
+      <tr><td><kbd>v</kbd></td><td>Mark the current file viewed (collapses it, moves on)</td></tr>
+      <tr><td><kbd>c</kbd> / <kbd>Shift</kbd> + <kbd>C</kbd></td><td>Copy the selection as a reference / with code</td></tr>
+      <tr><td><kbd>s</kbd></td><td>Copy the change summary</td></tr>
+      <tr><td><kbd>o</kbd></td><td>Open the current file in your editor</td></tr>
+      <tr><td><kbd>f</kbd> / <kbd>Shift</kbd> + <kbd>F</kbd></td><td>Next / previous finding</td></tr>
+      <tr><td><kbd>/</kbd></td><td>Filter files by path</td></tr>
+      <tr><td><kbd>g</kbd></td><td>Go to a reference (paste <code>path:line</code> or a copied reference)</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Close this, clear the selection toolbar</td></tr>
+    </tbody>
+  </table>
+  <form method="dialog"><button class="btn" type="submit">Close</button></form>
+</dialog>
+
+<script id="data" type="application/json">{{DV:DATA}}</script>
+<script>{{DV:DIFF2HTML_JS}}</script>
+<script>{{DV:VIEWER_JS}}</script>
+</body>
+</html>
